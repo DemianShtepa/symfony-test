@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProjectMilestone index{% endblock %}
+
+{% block body %}
+    <h1>ProjectMilestone index</h1>
+    <a href="{{ path('app_project_milestone_new') }}">Create new</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Deadline</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for project_milestone in project_milestones %}
+            <tr>
+                <td>{{ project_milestone.id }}</td>
+                <td>{{ project_milestone.title }}</td>
+                <td>{{ project_milestone.description }}</td>
+                <td>{{ project_milestone.deadline ? project_milestone.deadline|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_project_milestone_show', {'id': project_milestone.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

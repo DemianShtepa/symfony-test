@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProjectMilestone{% endblock %}
+
+{% block body %}
+    <h1>ProjectMilestone</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ project_milestone.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ project_milestone.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ project_milestone.description }}</td>
+            </tr>
+            <tr>
+                <th>Deadline</th>
+                <td>{{ project_milestone.deadline ? project_milestone.deadline|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_project_milestone_index') }}">back to list</a>
+
+    {{ include('project_milestone/_delete_form.html.twig') }}
+{% endblock %}
